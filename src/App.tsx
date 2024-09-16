@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+interface Interval {
+  start: number,
+  end: number
+}
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [periods, setPeriods] = React.useState<Interval[]>([{
+    start: 0,
+    end: 100
+  }])
+
+  const split = (event: React.SyntheticEvent<HTMLFormElement>) : void => {
+  	// put your split logic here
+  }
+
+  return ( 
+    <div className = 'interval-split' >
+      <form onSubmit = {split} >
+      	<label>Start: <input type="number" /></label>
+      	<label>End: <input type="number" /></label>
+      	<button>Split</button> 
+      </form>
+      {/* Put the result of the split here */}
     </div>
-  );
+  )
 }
 
 export default App;
+
+
