@@ -1,33 +1,135 @@
-import React from 'react';
-import './App.css';
-
-interface Interval {
-  start: number,
-  end: number
-}
+import React, { useEffect } from "react";
+import "./App.css";
+import {
+  BreakPoint,
+  Interval,
+  splitUsingSlice,
+  Validation,
+} from "./arrayTools";
 
 function App() {
-  const [periods, setPeriods] = React.useState<Interval[]>([{
-    start: 0,
-    end: 100
-  }])
+  const defaultBreakPoint = {
+    startBreakPoint: undefined,
+    endBreakPoint: undefined,
+  };
+  const [periods, setPeriods] = React.useState<Interval[]>([
+    {
+      start: 0,
+      end: 100,
+    },
+  ]);
+  const [breakPoint, setBreakPoint] =
+    React.useState<BreakPoint>(defaultBreakPoint);
+  const [validationRules, setValidationRules] = React.useState<Validation>();
 
-  const split = (event: React.SyntheticEvent<HTMLFormElement>) : void => {
-  	// put your split logic here
-  }
+  useEffect(() => {
+    validate(breakPoint);
+  }, [breakPoint]);
 
-  return ( 
-    <div className = 'interval-split' >
-      <form onSubmit = {split} >
-      	<label>Start: <input type="number" /></label>
-      	<label>End: <input type="number" /></label>
-      	<button>Split</button> 
+  const validate = ({ startBreakPoint, endBreakPoint }: BreakPoint): void => {
+    console.log({ startBreakPoint, endBreakPoint });
+    if (startBreakPoint !== undefined && endBreakPoint !== undefined) {
+      if (startBreakPoint >= endBreakPoint) {
+        setValidationRules({
+          validationMessage: "⚠️ start must be strictly lower than end",
+          className: "alert",
+          disabledButton: true,
+        });
+      }
+      if (startBreakPoint < endBreakPoint) {
+        setValidationRules({
+          validationMessage: "",
+          className: "",
+          disabledButton: false,
+        });
+      }
+      if (startBreakPoint < 0 || endBreakPoint < 0) {
+        setValidationRules({
+          validationMessage: "⚠️ values must be positive",
+          className: "alert",
+          disabledButton: true,
+        });
+      }
+    } else {
+      setValidationRules({
+        validationMessage: "enter values please 👀",
+        className: "info",
+        disabledButton: true,
+      });
+    }
+  };
+  const split = (event: React.SyntheticEvent<HTMLFormElement>): void => {
+    // put your split logic here
+    event.preventDefault();
+    const { startBreakPoint, endBreakPoint } = breakPoint;
+    const arr = splitUsingSlice(periods, { startBreakPoint, endBreakPoint });
+    setPeriods(arr);
+    setBreakPoint(defaultBreakPoint);
+    (event.target as any).reset();
+  };
+
+  return (
+    <div className="interval-split">
+      <h1>split interval tool 🔪 </h1>
+      <form onSubmit={split} className="interval-split__form">
+        <div>
+          <label>
+            <span>Start: </span>
+            <input
+              type="number"
+              onChange={(event) =>
+                setBreakPoint({
+                  ...breakPoint,
+                  startBreakPoint: Number(event.target.value),
+                })
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            <span>End: </span>
+            <input
+              type="number"
+              onChange={(event) =>
+                setBreakPoint({
+                  ...breakPoint,
+                  endBreakPoint: Number(event.target.value),
+                })
+              }
+            />
+          </label>
+        </div>
+        {validationRules?.validationMessage && (
+          <div className={validationRules?.className + " validation-message"}>
+            <p>{validationRules.validationMessage}</p>
+          </div>
+        )}
+        <div>
+          <button
+            disabled={validationRules?.disabledButton}
+            className={validationRules?.disabledButton ? "disabled" : "active"}
+          >
+            Split
+          </button>
+        </div>
       </form>
-      {/* Put the result of the split here */}
+      <div className="interval-split__ranges">
+        {periods.map((p) => {
+          return (
+            <div
+              style={{
+                width: (p.end - p.start) * 10,
+              }}
+            >
+              <span>{p.start} - </span>
+              <span>{p.end}</span>
+            </div>
+          );
+        })}
+      </div>
     </div>
-  )
+  );
 }
 
 export default App;
-
-

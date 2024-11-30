@@ -1,13 +1,117 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.interval-split {
+  margin: 0px auto;
+  width: 1200px;
+  padding: 25px 15px;
+  box-shadow: 4px 3px 7px 0px grey;
+  margin-top: 50px;
+  position: relative;
+  padding-top: 100px;
+}
+
+form.interval-split__form {
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+}
+
+form.interval-split__form label input {
+  float: right;
+  display: block;
+}
+
+interval-split__form button {
+  display: block;
+  background: transparent;
+  border: 1px solid grey;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+.interval-split__form button {
+  display: block;
+  background: transparent;
+  border: 1px solid grey;
+  padding: 2px 5px;
+  border-radius: 5px;
+  float: right;
+}
+.interval-split__form label span {
+  display: block;
+  float: left;
+}
+
+form.interval-split__form label {
+  display: flow-root;
+  height: fit-content;
+}
+
+form.interval-split__form > div {
+  width: 100%;
+  display: flow-root;
+  margin-top: 5px;
+  height: fit-content;
+}
+.interval-split__ranges {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 15px;
+  justify-content: center;
+}
+
+.interval-split__ranges div {
+  border-radius: 2px;
+  border: 1px solid grey;
+  margin: 5px;
+  padding: 1px;
+  text-align: center;
+  min-width: fit-content;
+}
+.validation-message {
+  border-radius: 2px;
+  border: 1px solid;
+  text-align: center;
+  font-size: 10px;
+}
+button.active {
+  border-color: #0db6d4;
+  color: #0db6d4;
+}
+.info {
+  border-color: #0d9ada;
+  color: #0c5686;
+}
+.alert {
+  border-color: red;
+  color: red;
+}
+.interval-split h1 {
+  text-align: center;
+  color: #0e9ada;
+  text-shadow: 1px 1px 1px #4a4545;
+  text-transform: capitalize;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid #ededed;
+  padding: 15px 0;
+  margin: 0;
+}
+h1 span {
+  transform: rotateY(-180deg);
+  display: inline-block;
 }
