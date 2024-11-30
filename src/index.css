@@ -122,7 +122,7 @@ button.active {
   text-align: center;
   font-size: 33px;
   color: #ffffff;
-  text-shadow: 1px 2px 4px #4a4545;
+  text-shadow: -1px 0px 2px #4a4545;
   text-transform: capitalize;
   position: absolute;
   width: 100%;
@@ -136,10 +136,17 @@ button.active {
   justify-content: center;
 }
 
+input::placeholder {
+  font-size: 11px;
+  opacity: 0.5;
+  color: grey;
+}
+
 .logo img {
   max-width: 50px;
-  filter: invert(0.6);
+  filter: invert(1) drop-shadow(0px 0px 2px #4a4545);
 }
+
 .footer {
   position: absolute;
   bottom: 0;
