@@ -6,6 +6,7 @@ import {
   splitUsingSlice,
   Validation,
 } from "./arrayTools";
+import logo from "./assets/logo.png";
 
 function App() {
   const defaultBreakPoint = {
@@ -69,7 +70,10 @@ function App() {
 
   return (
     <div className="interval-split">
-      <h1>split interval tool 🔪 </h1>
+      <h1 className="logo">
+        <img src={logo} />
+        <span>split interval tool</span>
+      </h1>
       <form onSubmit={split} className="interval-split__form">
         <div>
           <label>

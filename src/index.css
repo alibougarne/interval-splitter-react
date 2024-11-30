@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap");
+
 body {
   margin: 0;
   font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
@@ -113,10 +115,14 @@ button.active {
   border-color: red;
   color: red;
 }
-.interval-split h1 {
+.interval-split h1.logo {
+  font-family: "Goldman", sans-serif;
+  font-weight: 700;
+  font-style: normal;
   text-align: center;
-  color: #0e9ada;
-  text-shadow: 1px 1px 1px #4a4545;
+  font-size: 33px;
+  color: #ffffff;
+  text-shadow: 1px 2px 4px #4a4545;
   text-transform: capitalize;
   position: absolute;
   width: 100%;
@@ -125,12 +131,15 @@ button.active {
   border-bottom: 1px solid #ededed;
   padding: 15px 0;
   margin: 0;
-}
-h1 span {
-  transform: rotateY(-180deg);
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.logo img {
+  max-width: 50px;
+  filter: invert(0.6);
+}
 .footer {
   position: absolute;
   bottom: 0;
