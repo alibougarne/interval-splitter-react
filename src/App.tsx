@@ -27,6 +27,7 @@ function App() {
   }, [breakPoint]);
 
   const validate = ({ startBreakPoint, endBreakPoint }: BreakPoint): void => {
+    console.log({ startBreakPoint, endBreakPoint });
     if (startBreakPoint !== undefined && endBreakPoint !== undefined) {
       if (startBreakPoint >= endBreakPoint) {
         setValidationRules({
@@ -76,7 +77,14 @@ function App() {
             <span>Start: </span>
             <input
               type="number"
+              placeholder="enter a number..."
               onChange={(event) =>
+                setBreakPoint({
+                  ...breakPoint,
+                  startBreakPoint: Number(event.target.value),
+                })
+              }
+              onBlur={(event) =>
                 setBreakPoint({
                   ...breakPoint,
                   startBreakPoint: Number(event.target.value),
@@ -90,7 +98,14 @@ function App() {
             <span>End: </span>
             <input
               type="number"
+              placeholder="enter a number..."
               onChange={(event) =>
+                setBreakPoint({
+                  ...breakPoint,
+                  endBreakPoint: Number(event.target.value),
+                })
+              }
+              onBlur={(event) =>
                 setBreakPoint({
                   ...breakPoint,
                   endBreakPoint: Number(event.target.value),
@@ -114,9 +129,10 @@ function App() {
         </div>
       </form>
       <div className="interval-split__ranges">
-        {periods.map((p) => {
+        {periods.map((p, index) => {
           return (
             <div
+              key={`range-${index}`}
               style={{
                 width: (p.end - p.start) * 10,
               }}
