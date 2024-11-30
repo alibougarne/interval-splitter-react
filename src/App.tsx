@@ -137,6 +137,7 @@ function App() {
                 width: (p.end - p.start) * 10,
               }}
             >
+              <div className="loading"></div>
               <span>{p.start} - </span>
               <span>{p.end}</span>
             </div>

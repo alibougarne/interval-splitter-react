@@ -73,15 +73,26 @@ form.interval-split__form > div {
   justify-content: center;
 }
 
-.interval-split__ranges div {
+.interval-split__ranges > div {
   border-radius: 2px;
   margin: 5px;
   padding: 5px;
   text-align: center;
   min-width: fit-content;
-  background: #0e9fce;
+  position: relative;
   color: white;
   font-size: 12px;
+}
+
+.loading {
+  background: #0e9fce;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: -1;
+  animation: center-animate 1s linear;
 }
 .validation-message {
   border-radius: 2px;
@@ -134,4 +145,13 @@ h1 span {
   margin: 5px 0;
   padding: 0 10px;
   color: #005680;
+}
+
+@keyframes center-animate {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }

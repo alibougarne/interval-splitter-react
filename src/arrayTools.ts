@@ -5,7 +5,9 @@ export function splitUsingSlice(
   let result: number[][] = [];
   result = mapToArray(interval);
   const slicedArray = checkAndSlice(result, { startBreakPoint, endBreakPoint });
-  return mapToInterval(slicedArray);
+  return mapToInterval(slicedArray)
+    .sort((a, b) => a.end - b.end)
+    .filter((interval) => interval.start !== interval.end);
 }
 
 function checkAndSlice(
@@ -22,7 +24,7 @@ function checkAndSlice(
       arr.includes(startBreakPoint!) ||
       arr.includes(endBreakPoint!) ||
       breakPointArray.includes(arr[0]) ||
-      breakPointArray.includes(arr[arr.length])
+      breakPointArray.includes(arr[arr.length + 1])
     ) {
       mergedArray = [...mergedArray, ...arr];
     } else if (arr.length) {
@@ -65,7 +67,7 @@ export function mapToArray(interval: Interval[]): number[][] {
 export function mapToInterval(result: number[][]): Interval[] {
   const mapToObject = result.map((a) => ({
     start: a[0],
-    end: a.splice(-1)[0],
+    end: a.slice(-1)[0],
   }));
   return mapToObject;
 }
