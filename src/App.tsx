@@ -27,7 +27,6 @@ function App() {
   }, [breakPoint]);
 
   const validate = ({ startBreakPoint, endBreakPoint }: BreakPoint): void => {
-    console.log({ startBreakPoint, endBreakPoint });
     if (startBreakPoint !== undefined && endBreakPoint !== undefined) {
       if (startBreakPoint >= endBreakPoint) {
         setValidationRules({
