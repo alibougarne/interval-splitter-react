@@ -27,7 +27,6 @@ function App() {
   }, [breakPoint]);
 
   const validate = ({ startBreakPoint, endBreakPoint }: BreakPoint): void => {
-    console.log({ startBreakPoint, endBreakPoint });
     if (startBreakPoint !== undefined && endBreakPoint !== undefined) {
       if (startBreakPoint >= endBreakPoint) {
         setValidationRules({
@@ -149,7 +148,11 @@ function App() {
         <p>
           {" "}
           @author:{" "}
-          <a href="https://alibougarne.github.io/#/" target="_blank">
+          <a
+            href="https://alibougarne.github.io/#/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Ali BOUGARNE
           </a>
         </p>
