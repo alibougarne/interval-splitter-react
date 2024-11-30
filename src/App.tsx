@@ -128,6 +128,16 @@ function App() {
           );
         })}
       </div>
+      <div className={"footer"}>
+        <p> &copy;Eurocontrol test project </p>
+        <p>
+          {" "}
+          @author:{" "}
+          <a href="https://alibougarne.github.io/#/" target="_blank">
+            Ali BOUGARNE
+          </a>
+        </p>
+      </div>
     </div>
   );
 }

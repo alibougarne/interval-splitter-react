@@ -1,8 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -20,17 +19,19 @@ code {
   margin-top: 50px;
   position: relative;
   padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 form.interval-split__form {
-  margin: 0 auto;
+  margin: 50px auto;
   display: block;
-  width: 200px;
+  width: 300px;
 }
 
 form.interval-split__form label input {
   float: right;
   display: block;
+  width: 80%;
 }
 
 interval-split__form button {
@@ -45,8 +46,8 @@ interval-split__form button {
   display: block;
   background: transparent;
   border: 1px solid grey;
-  padding: 2px 5px;
-  border-radius: 5px;
+  padding: 5px 15px;
+  border-radius: 2px;
   float: right;
 }
 .interval-split__form label span {
@@ -74,11 +75,13 @@ form.interval-split__form > div {
 
 .interval-split__ranges div {
   border-radius: 2px;
-  border: 1px solid grey;
   margin: 5px;
-  padding: 1px;
+  padding: 5px;
   text-align: center;
   min-width: fit-content;
+  background: #0e9fce;
+  color: white;
+  font-size: 12px;
 }
 .validation-message {
   border-radius: 2px;
@@ -89,6 +92,7 @@ form.interval-split__form > div {
 button.active {
   border-color: #0db6d4;
   color: #0db6d4;
+  background: #0db6d40d;
 }
 .info {
   border-color: #0d9ada;
@@ -114,4 +118,20 @@ button.active {
 h1 span {
   transform: rotateY(-180deg);
   display: inline-block;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  border-top: 1px solid #ededed;
+}
+
+.footer p {
+  font-size: 12px;
+  margin: 5px 0;
+  padding: 0 10px;
+  color: #005680;
 }
