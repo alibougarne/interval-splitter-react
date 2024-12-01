@@ -6,8 +6,7 @@ export function splitUsingSlice(
   result = mapToArray(interval);
   const slicedArray = checkAndSlice(result, { startBreakPoint, endBreakPoint });
   return mapToInterval(slicedArray)
-    .sort((a, b) => a.end - b.end)
-    .filter((interval) => interval.start !== interval.end);
+    .sort((a, b) => a.end - b.end);
 }
 
 function checkAndSlice(
@@ -36,6 +35,7 @@ function checkAndSlice(
     endBreakPoint,
   });
   result = [...result, ...slicedMergedArray];
+  console.log(result);
   return result.filter((arr) => arr.length > 0);
 }
 
@@ -49,6 +49,7 @@ function sliceArrayWithBreakPoints(
     array.indexOf(endBreakPoint!) + 1
   );
   const end = array.slice(array.indexOf(endBreakPoint!) + 1);
+  console.log(start, middle, end);
   return [start, middle, end];
 }
 

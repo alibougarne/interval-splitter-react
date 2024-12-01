@@ -20,7 +20,7 @@ function App() {
     },
   ]);
   const [breakPoint, setBreakPoint] =
-    React.useState<BreakPoint>(defaultBreakPoint);
+      React.useState<BreakPoint>(defaultBreakPoint);
   const [validationRules, setValidationRules] = React.useState<Validation>();
 
   useEffect(() => {
@@ -69,99 +69,100 @@ function App() {
   };
 
   return (
-    <div className="interval-split">
-      <h1 className="logo">
-        <img src={logo} />
-        <span>split interval tool</span>
-      </h1>
-      <form onSubmit={split} className="interval-split__form">
-        <div>
-          <label>
-            <span>Start: </span>
-            <input
-              type="number"
-              placeholder="enter a number..."
-              onChange={(event) =>
-                setBreakPoint({
-                  ...breakPoint,
-                  startBreakPoint: Number(event.target.value),
-                })
-              }
-              onBlur={(event) =>
-                setBreakPoint({
-                  ...breakPoint,
-                  startBreakPoint: Number(event.target.value),
-                })
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            <span>End: </span>
-            <input
-              type="number"
-              placeholder="enter a number..."
-              onChange={(event) =>
-                setBreakPoint({
-                  ...breakPoint,
-                  endBreakPoint: Number(event.target.value),
-                })
-              }
-              onBlur={(event) =>
-                setBreakPoint({
-                  ...breakPoint,
-                  endBreakPoint: Number(event.target.value),
-                })
-              }
-            />
-          </label>
-        </div>
-        {validationRules?.validationMessage && (
-          <div className={validationRules?.className + " validation-message"}>
-            <p>{validationRules.validationMessage}</p>
+      <div className="interval-split">
+        <h1 className="logo">
+          <img src={logo} />
+          <span>split interval tool</span>
+        </h1>
+        <form onSubmit={split} className="interval-split__form">
+          <div>
+            <label>
+              <span>Start: </span>
+              <input
+                  type="number"
+                  placeholder="enter a number..."
+                  onChange={(event) =>
+                      setBreakPoint({
+                        ...breakPoint,
+                        startBreakPoint: Number(event.target.value),
+                      })
+                  }
+                  onBlur={(event) =>
+                      setBreakPoint({
+                        ...breakPoint,
+                        startBreakPoint: Number(event.target.value),
+                      })
+                  }
+              />
+            </label>
           </div>
-        )}
-        <div>
-          <button
-            disabled={validationRules?.disabledButton}
-            className={validationRules?.disabledButton ? "disabled" : "active"}
-          >
-            Split
-          </button>
-        </div>
-      </form>
-      <div className="interval-split__ranges">
-        {periods.map((p, index) => {
-          return (
-            <div
-              key={`range-${index}`}
-              style={{
-                width: (p.end - p.start) * 10,
-              }}
+          <div>
+            <label>
+              <span>End: </span>
+              <input
+                  type="number"
+                  placeholder="enter a number..."
+                  onChange={(event) =>
+                      setBreakPoint({
+                        ...breakPoint,
+                        endBreakPoint: Number(event.target.value),
+                      })
+                  }
+                  onBlur={(event) =>
+                      setBreakPoint({
+                        ...breakPoint,
+                        endBreakPoint: Number(event.target.value),
+                      })
+                  }
+              />
+            </label>
+          </div>
+          {validationRules?.validationMessage && (
+              <div className={validationRules?.className + " validation-message"}>
+                <p>{validationRules.validationMessage}</p>
+              </div>
+          )}
+          <div>
+            <button
+                disabled={validationRules?.disabledButton}
+                className={validationRules?.disabledButton ? "disabled" : "active"}
             >
-              <div className="loading"></div>
-              <span>{p.start} - </span>
-              <span>{p.end}</span>
-            </div>
-          );
-        })}
+              Split
+            </button>
+          </div>
+        </form>
+        <div className="interval-split__ranges">
+          {periods.map((p, index) => {
+            return (
+                <div
+                    key={`range-${index}`}
+                    style={{
+                      width: (p.end - p.start) * 10,
+                    }}
+                    className={p.start === p.end ? "equal_range" : ""}
+                >
+                  <div className="loading"></div>
+                  <span>{p.start} - </span>
+                  <span>{p.end}</span>
+                </div>
+            );
+          })}
+        </div>
+        <div className={"footer"}>
+          <p> &copy;Eurocontrol test project </p>
+          <p>
+            {" "}
+            @author:{" "}
+            <a
+                href="https://alibougarne.github.io/#/"
+                target="_blank"
+                rel="noreferrer"
+            >
+              Ali BOUGARNE
+            </a>
+          </p>
+        </div>
       </div>
-      <div className={"footer"}>
-        <p> &copy;Eurocontrol test project </p>
-        <p>
-          {" "}
-          @author:{" "}
-          <a
-            href="https://alibougarne.github.io/#/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Ali BOUGARNE
-          </a>
-        </p>
-      </div>
-    </div>
   );
 }
 

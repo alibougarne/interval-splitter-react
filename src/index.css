@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap");
 
+
 body {
   margin: 0;
   font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
@@ -94,7 +95,7 @@ form.interval-split__form > div {
   top: 0;
   height: 100%;
   z-index: -1;
-  animation: center-animate 1s linear;
+  animation: loading 1s linear;
 }
 .validation-message {
   border-radius: 2px;
@@ -166,8 +167,38 @@ input::placeholder {
 .footer {
   background: #a9a9a914;
 }
+.equal_range {
+  --border-width: 1px;
+  position: relative;
+  background: white;
+  color: #4a4545 !important;
+}
+.equal_range ::after {
+  position: absolute;
+  content: "";
+  top: calc(-1 * var(--border-width));
+  left: calc(-1 * var(--border-width));
+  z-index: -1;
+  width: calc(100% + var(--border-width) * 2);
+  height: calc(100% + var(--border-width) * 2);
+  background: linear-gradient(
+          60deg,
+          white,
+          #383838
+  );
+  background-size: 300% 300%;
+  background-position: 0 50%;
+  border-radius: 2px;
+  animation: moveGradient 4s alternate infinite;
+}
 
-@keyframes center-animate {
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes loading {
   0% {
     width: 0;
   }
