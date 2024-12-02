@@ -99,6 +99,13 @@ form.interval-split__form > div {
     border-right: 1px solid #c5c5c5;
     box-sizing: content-box;
 }
+.interval-split__ranges .equal_ranges_collector {
+    display: none !important;
+}
+
+.interval-split__ranges.containsEqualRanges .equal_ranges_collector {
+    display: block !important;
+}
 .equal_ranges_collector::after {
     content: "";
     height: 15px;
