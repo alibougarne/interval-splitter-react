@@ -1,4 +1,5 @@
-import { Interval, BreakPoint, splitUsingSlice } from "./arrayTools";
+import { Interval, splitUsingSlice } from "./tools/arrayTools";
+import {BreakPoint} from "./features/breakpoints/BreakPoint";
 
 it("split an interval using break points", () => {
   const interval: Interval[] = [
@@ -7,12 +8,12 @@ it("split an interval using break points", () => {
       end: 100,
     },
   ];
-  const interval2 = [
+  const interval2: Interval[] = [
     { start: 0, end: 19 },
     { start: 20, end: 30 },
     { start: 31, end: 100 },
   ];
-  const interval3 = [
+  const interval3: Interval[] = [
     { start: 0, end: 19 },
     { start: 20, end: 24 },
     { start: 25, end: 50 },

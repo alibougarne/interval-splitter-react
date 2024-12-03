@@ -1,3 +1,5 @@
+import {BreakPoint} from "../features/breakpoints/BreakPoint";
+
 export function splitUsingSlice(
     interval: Interval[],
     {startBreakPoint, endBreakPoint}: BreakPoint
@@ -64,11 +66,10 @@ export function mapToArray(interval: Interval[]): number[][] {
 }
 
 export function mapToInterval(result: number[][]): Interval[] {
-    const mapToObject = result.map((a) => ({
+    return result.map((a) => ({
         start: a[0],
         end: a.slice(-1)[0],
     }));
-    return mapToObject;
 }
 
 export interface Interval {
@@ -76,10 +77,7 @@ export interface Interval {
     end: number;
 }
 
-export interface BreakPoint {
-    startBreakPoint: number | undefined;
-    endBreakPoint: number | undefined;
-}
+
 
 export interface Validation {
     validationMessage: string;
