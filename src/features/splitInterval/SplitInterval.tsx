@@ -11,6 +11,7 @@ import {updateBreakPoints} from "../breakpoints/breakpointsSlice";
 import {useAppDispatch} from "../../hooks";
 import {BreakPoint} from "../breakpoints/BreakPoint";
 import BreakPointWrapper from "../breakpoints/BreakPointWrapper";
+import BreakpointsCounter from "../breakpointsCounter/BreakpointsCounter";
 
 function SplitInterval() {
     const dispatch = useAppDispatch()
@@ -82,6 +83,8 @@ function SplitInterval() {
     return (
         <div className="interval-split">
             <BreakPointWrapper/>
+            <BreakpointsCounter/>
+            {/*<BreakpointsCounter/>*/}
             <h1 className="logo">
                 <img src={logo} alt="logo"/>
                 <span>split interval tool</span>
