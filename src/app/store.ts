@@ -1,33 +1,22 @@
-import {Action, combineSlices, configureStore, ThunkAction} from "@reduxjs/toolkit";
-import breakPointsReducer, {breakpointsSlice} from "../features/breakpoints/breakpointsSlice"
-import {setupListeners} from "@reduxjs/toolkit/query";
+import {Action, combineReducers, combineSlices, configureStore, ThunkAction} from "@reduxjs/toolkit";
+import breakpointsSlice from "../features/breakpoints/breakpointsSlice"
 
-const store =  configureStore({
-    reducer: {
-        breakPoints: breakPointsReducer
-    },
+
+const rootReducer = combineReducers({
+    breakPoints: breakpointsSlice
 })
-export const makeStore = (preloadedState?: Partial<RootState>) => {
-    const makeStore = configureStore({
-        reducer: combineSlices(breakpointsSlice),
-        // Adding the api middleware enables caching, invalidation, polling,
-        // and other useful features of `rtk-query`.
-        middleware: getDefaultMiddleware => {
-            return getDefaultMiddleware();
-        },
-        preloadedState,
+const store =  (preloadedState?: Partial<RootState>) => {
+    return configureStore({
+        reducer: rootReducer,
+        preloadedState
     })
-    // configure listeners using the provided defaults
-    // optional, but required for `refetchOnFocus`/`refetchOnReconnect` behaviors
-    setupListeners(makeStore.dispatch)
-    return makeStore
 }
+export type RootState = ReturnType<typeof rootReducer>
+export type AppStore = ReturnType<typeof store>
+export type AppDispatch = AppStore['dispatch']
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch;
-export type AppStore = typeof store;
 export type AppThunk<ThunkReturnType = void> = ThunkAction<
     ThunkReturnType,
     RootState,

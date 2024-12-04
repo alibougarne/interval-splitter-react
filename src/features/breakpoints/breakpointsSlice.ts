@@ -11,8 +11,8 @@ const initialState: BreakpointsSliceState = {
     value: [],
 }
 
-export const breakpointsSlice = createSlice({
-    name: 'breakpoints',
+const breakpointsSlice = createSlice({
+    name: 'breakPoints',
     initialState,
     reducers: {
         updateBreakPoints : (state, action: PayloadAction<BreakPoint>) => {
