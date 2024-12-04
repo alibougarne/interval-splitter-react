@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {selectBreakPoints} from "./breakpointsSlice";
 import {BreakPoint} from "./BreakPoint";
 import styles from './BreakPointWrapper.module.css'
@@ -6,9 +6,6 @@ import {useAppSelector} from "../../app/hooks";
 
 const BreakPointWrapper = () => {
     const breakPoints: BreakPoint[] = useAppSelector(selectBreakPoints).slice(-10);
-    useEffect(() => {
-        console.log("styles => ", styles);
-    }, []);
     return (!!breakPoints.length ? (
         <div className={styles.breakPoints_wrapper}>
             <div className={styles.breakpoint_state}>

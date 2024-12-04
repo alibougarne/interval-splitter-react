@@ -90,12 +90,12 @@ function SplitInterval() {
                 <span>split interval tool</span>
             </h1>
             <form onSubmit={split} className="interval-split__form">
-                <div>
+                <div className="start">
                     <label>
                         <span>Start: </span>
                         <input
                             type="number"
-                            placeholder="enter a number..."
+                            placeholder="enter a start number..."
                             onChange={(event) =>
                                 setBreakPoint({
                                     ...breakPoint,
@@ -111,12 +111,12 @@ function SplitInterval() {
                         />
                     </label>
                 </div>
-                <div>
+                <div className="end">
                     <label>
                         <span>End: </span>
                         <input
                             type="number"
-                            placeholder="enter a number..."
+                            placeholder="enter an end number..."
                             onChange={(event) =>
                                 setBreakPoint({
                                     ...breakPoint,

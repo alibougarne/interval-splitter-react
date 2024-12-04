@@ -1,4 +1,4 @@
-import {Action, combineReducers, combineSlices, configureStore, ThunkAction} from "@reduxjs/toolkit";
+import {Action, combineReducers, configureStore, ThunkAction} from "@reduxjs/toolkit";
 import breakpointsSlice from "../features/breakpoints/breakpointsSlice"
 
 
