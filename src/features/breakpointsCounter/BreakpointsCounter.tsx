@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {connect} from "react-redux";
-import {RootState} from "../../store";
+import {RootState} from "../../app/store";
+import styles from './BreakpointsCounter.module.css'
 
 interface BreakPointsCounterProps{
     counter: number
@@ -10,9 +11,9 @@ const BreakpointsCounter = (props: BreakPointsCounterProps) => {
     useEffect(() => {
         setCounter(props.counter);
     }, [props]);
-    return ((!!counter ? (<div className="breakpoints-counter">
-        <span className="title">Used break points: </span>
-        <span className="counter">{counter}</span>
+    return ((!!counter ? (<div className={styles.breakpoints_counter}>
+        <span className={styles.title}>Used break points: </span>
+        <span className={styles.counter}>{counter}</span>
     </div>) : (<></>))); // return void element if no breakpoints added
 }
 

@@ -1,9 +1,9 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {BreakPoint} from "./BreakPoint";
-import {RootState} from "../../store";
+import {RootState} from "../../app/store";
 
 
-interface BreakpointsSliceState {
+export interface BreakpointsSliceState {
     value: BreakPoint[]
 }
 // Define the initial state using that type

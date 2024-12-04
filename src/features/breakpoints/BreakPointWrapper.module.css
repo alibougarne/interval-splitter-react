@@ -1,0 +1,62 @@
+.breakPoints_wrapper {
+    position: relative;
+    left: 0;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+}
+
+.breakpoint_state {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    color: #828080;
+    margin-right: 5px;
+}
+
+.value {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    padding: 2px 10px;
+    align-items: center;
+    color: #ffffff;
+    border-radius: 2px;
+    background: transparent;
+    text-shadow: -1px 1px 2px #0000008a;
+}
+.value:not(.movingBorder) {
+    border: 1px solid #ccc;
+    color: #ccc;
+    text-shadow: none;
+    margin-right: 5px;
+}
+.movingBorder{
+    --border-width: 1px;
+    position: relative;
+}
+.movingBorder:after {
+    position: absolute;
+    content: "";
+    top: calc(-1 * var(--border-width));
+    left: calc(-1 * var(--border-width));
+    z-index: -1;
+    width: calc(100% + var(--border-width) * 2);
+    height: calc(100% + var(--border-width) * 2);
+    background: linear-gradient(
+            60deg,
+            white,
+            #383838
+    );
+    background-size: 300% 300%;
+    background-position: 0 50%;
+    border-radius: 2px;
+    animation: moveGradient 4s alternate infinite;
+}
+@keyframes moveGradient {
+    50% {
+        background-position: 100% 50%;
+    }
+}

@@ -8,7 +8,7 @@ import {
 import logo from "../../assets/logo.png";
 import {regroupEmptyPeriods} from "../../tools/domManipulations";
 import {updateBreakPoints} from "../breakpoints/breakpointsSlice";
-import {useAppDispatch} from "../../hooks";
+import {useAppDispatch} from "../../app/hooks";
 import {BreakPoint} from "../breakpoints/BreakPoint";
 import BreakPointWrapper from "../breakpoints/BreakPointWrapper";
 import BreakpointsCounter from "../breakpointsCounter/BreakpointsCounter";
