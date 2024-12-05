@@ -4,18 +4,22 @@
     display: flex;
     align-items: center;
     height: fit-content;
+    font-size: 12px;
+    color: #828080;
 }
-
+.breakPoints_wrapper:before {
+    content: "\2023";
+    font-size: 20px;
+    margin-right: 5px;
+}
 .breakpoint_state {
     display: flex;
     align-items: center;
 }
-
 .title {
     color: #828080;
     margin-right: 5px;
 }
-
 .value {
     width: fit-content;
     height: fit-content;

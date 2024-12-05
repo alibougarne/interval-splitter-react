@@ -1,3 +1,11 @@
 .breakpoints_counter {
     color: #828080;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+.breakpoints_counter:before {
+    content: "\2023";
+    font-size: 20px;
+    margin-right: 5px;
 }
