@@ -4,7 +4,7 @@ Read the following instructions to setup the project in your computer:
 
 1. clone the repo or create a new codespace
 2. create a branch with your first and last name
-3. run `npm install`
+3. run `yarn`
 4. run `npm start`
 5. push the code when you are done
 

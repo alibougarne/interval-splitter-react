@@ -1,9 +1,13 @@
 {
   "name": "ectl",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-syntax-flow": "^7.14.5",
+    "@babel/plugin-transform-react-jsx": "^7.14.9",
     "@reduxjs/toolkit": "^2.4.0",
+    "@testing-library/dom": "^10.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
@@ -11,30 +15,24 @@
     "typescript": "^4.9.5"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-typescript": "^7.26.0",
-    "@types/jest": "^27.5.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
     "@types/node": "^16.18.108",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.0.1",
-    "@testing-library/user-event": "^14.5.2"
+    "serve": "^14.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3000 NODE_NO_WARNINGS=1 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "NODE_NO_WARNINGS=1 react-scripts test",
+    "eject": "react-scripts eject",
+    "serve": "serve -s build -l 4000"
   },
-  "jest": {
-    "transformIgnorePatterns": [
-      "node_modules/(?!(@bundled-es-modules)/)"
-    ],
-    "transform": {
-      "\\.js$": "<rootDir>/node_modules/babel-jest"
-    }
-  },
-  "eslintConfig": {
+ "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
