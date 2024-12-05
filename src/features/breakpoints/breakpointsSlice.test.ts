@@ -1,32 +1,29 @@
-import breakpointsSlice, { BreakpointsSliceState, selectBreakPoints, updateBreakPoints} from "./breakpointsSlice";
-import {useAppDispatch, useAppSelector, useAppStore} from "../../app/hooks";
-import {BreakPoint} from "./BreakPoint";
-import {AppStore, RootState} from "../../app/store";
-import {RenderOptions} from "@testing-library/react";
-interface ExtendedRenderOptions
-    extends Omit<RenderOptions, 'queries'> {
-    preloadedState?: Partial<RootState>
-    store?: AppStore
-}
+import breakPointsReducer, {BreakpointsSliceState, updateBreakPoints} from './breakpointsSlice';
 
 describe("break points reducer", () => {
-    // const initialState: BreakPoint = {startBreakPoint: 0, endBreakPoint: 10};
-    // let dispatch = useAppDispatch();
-    // let store= useAppStore();
+    const initialState: BreakpointsSliceState = {
+        value: [],
+    }
     beforeEach(() => {
-       // dispatch(updateBreakPoints({...initialState}));
     })
-    it('initialize slice with initialValue', () => {
 
+    it('initialize slice with initialValue', () => {
+        expect(breakPointsReducer(undefined, { type: 'unknown' })).toEqual(initialState);
     })
 
     it("should handle adding break points", () => {
-        /*const dispatch = useAppDispatch();
-        // const store= useAppStore();
-        expect(useAppSelector(selectBreakPoints)).toBe([]);
-        const payload: BreakPoint = {startBreakPoint: 0, endBreakPoint: 3};
-        dispatch(updateBreakPoints(payload));
-        expect(useAppSelector(selectBreakPoints)).toBe([{startBreakPoint: 0, endBreakPoint: 3}])*/
+        const state1: BreakpointsSliceState = breakPointsReducer(initialState, updateBreakPoints({startBreakPoint: 1, endBreakPoint: 10}));
+        expect(state1).toEqual(
+            {
+                value: [{startBreakPoint: 1, endBreakPoint: 10}],
+            }
+        );
+        // reducer1 is the previous state
+        const state2: BreakpointsSliceState = breakPointsReducer(state1, updateBreakPoints({startBreakPoint: 2, endBreakPoint: 7}));
+        // reducer2 is the previous state
+        const state3: BreakpointsSliceState = breakPointsReducer(state2, updateBreakPoints({startBreakPoint: 23, endBreakPoint: 18}));
+        expect(state3.value.length).toEqual(3);
+
     })
 
 })
