@@ -1,13 +1,7 @@
 import {renderWithProviders} from "../../utils/test.utils";
 import {fireEvent, screen, waitFor} from "@testing-library/react";
 import SplitInterval from "../splitInterval/SplitInterval";
-import {wait} from "@testing-library/user-event/utils/misc/wait";
-
-
-// We use msw to intercept the network request during the test,
-// and return the response 'John Smith' after 150ms
-// when receiving a get request to the `/api/user` endpoint
-
+// import {wait} from "@testing-library/user-event/utils/misc/wait";
 
 const setup = () => {
     const utils = renderWithProviders(<SplitInterval />)
@@ -30,4 +24,7 @@ test('It should count break points after entering values', () => {
     // await waitFor(() => );
     expect(el).toBeInTheDocument();
     expect(el.textContent).toEqual("Used break points: 1");
+    expect((inputStart as any).value).toEqual("");
+    expect((inputEnd as any).value).toEqual("");
+    expect(splitButton).toBeDisabled();
 })
