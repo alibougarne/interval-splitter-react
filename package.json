@@ -20,19 +20,28 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.14",
     "@types/node": "^16.18.108",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "serve": "^14.2.4"
   },
   "scripts": {
-    "start": "PORT=3000 NODE_NO_WARNINGS=1 react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "NODE_NO_WARNINGS=1 react-scripts test",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "serve": "serve -s build -l 4000"
   },
- "eslintConfig": {
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@bundled-es-modules)/)"
+    ],
+    "transform": {
+      "\\.js$": "<rootDir>/node_modules/babel-jest"
+    }
+  },
+  "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
